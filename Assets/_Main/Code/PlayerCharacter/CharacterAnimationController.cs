@@ -1,9 +1,20 @@
 using UnityEngine;
+using VInspector;
 
-public class CharacterAnimationController : MonoBehaviour
+namespace a1.PlayerCharacter
 {
-    [SerializeField]
-    private Animator m_animator;
-    
-    // TODO: implement dedicated animation controller
+    public class CharacterAnimationController : MonoBehaviour
+    {
+        [SerializeField] private Animator m_animator;
+
+        [SerializeField] private float m_movementSpeed = 1f;
+
+        private int m_movementSpeedHash = Animator.StringToHash("MovementSpeed");
+
+        [Button]
+        public void SetSpeed()
+        {
+            m_animator.SetFloat(m_movementSpeedHash, m_movementSpeed);
+        }
+    }
 }
