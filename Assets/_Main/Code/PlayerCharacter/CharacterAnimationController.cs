@@ -1,5 +1,5 @@
 using UnityEngine;
-using VInspector;
+using VContainer;
 
 namespace a1.PlayerCharacter
 {
@@ -9,12 +9,17 @@ namespace a1.PlayerCharacter
 
         [SerializeField] private float m_movementSpeed = 1f;
 
-        private int m_movementSpeedHash = Animator.StringToHash("MovementSpeed");
-
-        [Button]
-        public void SetSpeed()
+        private int m_MotionSpeedHash = Animator.StringToHash("MotionSpeed");
+        
+        [Inject]
+        private void Inject(IInputService inputService)
         {
-            m_animator.SetFloat(m_movementSpeedHash, m_movementSpeed);
+            inputService.OnMove += UpdateMoveAnimation;
+        }
+        
+        private void UpdateMoveAnimation(Vector2 moveInput)
+        {
+            m_animator.SetFloat(m_MotionSpeedHash, moveInput.magnitude * 5);
         }
     }
 }

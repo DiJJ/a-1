@@ -18,8 +18,8 @@ namespace a1.Scopes
     
     public sealed class ProjectScope : BaseLifetimeScope
     {
-        [SerializeField] 
-        private CameraDataSO m_cameraDataSO;
+        [SerializeField] private CameraDataSO m_cameraData;
+        [SerializeField] private CharacterStats m_characterStats;
         
         protected override void Configure(IContainerBuilder builder)
         {
@@ -38,7 +38,8 @@ namespace a1.Scopes
         
         private void RegisterScriptableObjects(in IContainerBuilder builder)
         {
-            builder.RegisterInstance(m_cameraDataSO);
+            builder.RegisterInstance(m_cameraData);
+            builder.RegisterInstance(m_characterStats);
         }
 
         protected override void RegisterMessageBrokers(in IContainerBuilder builder, out MessagePipeOptions options)

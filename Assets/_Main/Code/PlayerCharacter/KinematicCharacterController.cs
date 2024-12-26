@@ -6,10 +6,12 @@ namespace a1.PlayerCharacter
     [DisallowMultipleComponent]
     [RequireComponent(typeof(Rigidbody), typeof(CapsuleCollider))]
     public sealed class KinematicCharacterController : MonoBehaviour
-    {
-        [SerializeField] private CharacterStats m_characterStats;
+    { 
         [SerializeField] private float m_outerBounds = 0.05f;
         [SerializeField] private LayerMask m_collisionMask;
+        
+        private CharacterStats m_characterStats;
+
         
         private IInputService m_inputService;
         private ICameraController m_cameraController;
@@ -22,10 +24,11 @@ namespace a1.PlayerCharacter
         private bool m_isGrounded;
         
         [Inject]
-        private void Inject(IInputService inputService, ICameraController cameraController)
+        private void Inject(IInputService inputService, ICameraController cameraController, CharacterStats characterStats)
         {
             m_inputService = inputService;
             m_cameraController = cameraController;
+            m_characterStats = characterStats;
             
             SubscribeEvents();
             

@@ -28,7 +28,7 @@ namespace a1.PlayerCharacter
         public Vector3 CameraRight => Vector3.ProjectOnPlane(m_cameraRoot.right, Vector3.up).normalized;
         
         [Inject]
-        private void Inject(IInputService inputService, IPlayer player, CameraDataSO cameraDataSO)
+        public void Inject(IInputService inputService, IPlayer player, CameraDataSO cameraDataSO)
         {
             m_InputService = inputService;
             m_cameraRoot = player.CameraRoot;

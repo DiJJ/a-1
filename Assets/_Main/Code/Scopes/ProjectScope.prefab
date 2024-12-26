@@ -48,4 +48,5 @@ MonoBehaviour:
     TypeName: 
   autoRun: 1
   autoInjectGameObjects: []
-  m_cameraDataSO: {fileID: 11400000, guid: 89af358b893c12546b9e40e025044d28, type: 2}
+  m_cameraData: {fileID: 11400000, guid: 89af358b893c12546b9e40e025044d28, type: 2}
+  m_characterStats: {fileID: 11400000, guid: 070de1ed185a9ec4dbdf69f1c0863265, type: 2}
